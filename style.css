@@ -1,0 +1,237 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(to right top, #af989f, #adc9e9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+}
+i, 
+svg {
+  pointer-events: none;
+}
+
+.sequencer {
+  display: flex;
+  min-height: 7rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  min-height: 80vh;
+  width: 60%;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.644),
+    rgba(255, 255, 255, 0.445)
+  );
+  border-radius: 2rem;
+  z-index: 2;
+  backdrop-filter: blur(2rem);
+}
+
+h1 {
+  font-size: 1rem;
+  margin-left: -8rem;
+}
+
+.kick-pad,
+.snare-pad,
+.hihat-pad {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin: 0.1rem 0.2rem;
+  margin-top: 0.3rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+.kick-pad {
+  background-color: rgb(134, 187, 134);
+}
+.snare-pad {
+  background-color: rgb(127, 180, 201);
+}
+.hihat-pad {
+  background-color: rgb(187, 134, 159);
+}
+.kick-pad.active {
+  background-color: rgb(44, 148, 44);
+}
+.snare-pad.active {
+  background-color: rgb(48, 148, 187);
+}
+.hihat-pad.active {
+  background-color: rgb(184, 60, 118);
+}
+
+
+
+.kick-track,
+.snare-track,
+.hihat-track {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.kick,
+.snare,
+.hihat {
+  display: flex;
+  margin-right: 3rem;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  margin: 0rem 0.3rem;
+}
+.controls button {
+  padding: 0.4rem;
+  border: none;
+  background-color: rgb(224, 205, 93);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  border-radius: 0.3rem;
+}
+
+.pad {
+  transition: all 0.5s ease;
+}
+
+.play { 
+  position: absolute;
+  top: 6rem;
+  right: 1rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.1rem;
+  background-color: rgb(224, 205, 93);
+  cursor: pointer;
+  margin: 0rem 2rem 0rem 45rem;
+  border-radius: 0.5rem;
+  outline: none;
+  border: none;
+}
+
+.mute.active {
+  background-color: rgb(148, 148, 137);
+  outline: none;
+}
+
+.mute {
+  outline: none;
+  margin-left: 1rem;
+}
+
+.tempo {
+  margin: 1.5rem;
+  width: 30%;
+  position: absolute;
+  top: 7rem;
+  right: -6rem;
+}
+.tempo-slider {
+  padding: 0.1rem;
+  -webkit-appearance: none;
+  margin: 1rem 0.5rem;
+  width: 65%;
+  position: relative;
+  background: rgb(224, 205, 93);
+  cursor: pointer;
+  border-radius: 1rem;
+  outline: none;
+}
+.tempo p {
+  font-size: 1rem;
+  margin: 0.3rem 1rem 0rem -3rem;
+  text-align: center;
+}
+
+select {
+  padding: 0.6rem;
+  font-size: 0.8rem;
+  margin-left: 1rem;
+  border-radius: 0.5rem;
+}
+
+@keyframes playTrack {
+  from{
+    transform: scale(1);
+  } 
+  to{
+    transform: scale(1.2);
+  }
+}
+
+/*Piano*/
+.piano {
+  height: 18.875em;
+  width: 34em;
+  margin: 1em auto;
+  padding: 3em 0 0 3em;
+  position: relative;
+  border: 2px solid #470f20;
+  border-radius: 1em;
+  background: rgb(173, 109, 139);
+}
+
+.key {
+  margin:0;
+  padding:0;
+  list-style:none;
+  position:relative;
+  float:left;
+}
+
+.white {
+  height: 16em;
+  width: 4em;
+  z-index: 1;
+  border-left: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  border-radius: 0 0 5px 5px;
+  background: linear-gradient(to bottom,#eee 0%,#fff 100%);
+}
+
+.white.active {
+  border-top: 1px solid #777;
+  border-left: 1px solid #999;
+  border-bottom: 1px solid #999;
+  box-shadow: 2px 0 3px rgba(0,0,0,0.1) inset,-5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
+  background: linear-gradient(to bottom,#fff 0%,#e9e9e9 100%);
+}
+
+.black {
+  height: 8em;
+  width: 2em;
+  margin: 0 0 0 -1em;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  z-index: 2;
+  border: 1px solid #000;
+  border-radius: 0 0 3px 3px;
+  box-shadow: -1px -1px 2px rgba(255,255,255,0.2) inset,0 -5px 2px 3px rgba(0,0,0,0.6) inset,0 2px 4px rgba(0,0,0,0.5);
+  background: linear-gradient(45deg,#222 0%,#555 100%);
+}
+
+.black.active {
+  background: linear-gradient(to right,#444 0%,#222 100%);
+}
+
+
+ 
+ 
+
+
